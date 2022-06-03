@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
 
-    <title>Cours_php2022 - Introduction</title>
+    <title>Cours_php2022 - Variables</title>
     <!-- Mes styles -->
     <link rel="stylesheet" href="../css/style.css">
 
@@ -112,7 +112,7 @@
                                     <th scope="row">$GLOBALS </th>
                                     <td> Contient le nom et la valeur de toutes les variables globales du script. Les noms des variables sont les clés de ce tableau. <code>$GLOBALS["mavar"]</code> récupère la valeur de la variable $mavar en dehors de sa zone de visibilité (dans les fonctions par exemple).</td>
                                 </tr>
-                                tr>
+
                                 <th scope="row">$_COOKIE</th>
                                 <td>Contient le nom et la valeur des cookies enregistrés sur le poste client. Les noms des cookies sont les clefs de ce tableau.</td>
                                 </tr>
@@ -160,6 +160,74 @@
                 </div>
 
                 <hr>
+                <div class="row">
+                    <div class="col-sm-12 px-4">
+                        <h2 class="text-center"><u>4-Les opérateurs d'affectation combinés</u></h2>
+                        <p> En plus de l'opérateur classique d'affectation =, il existe plusieurs opérateurs d'affectation combinés. Ces opérateur réalisent à la fois une opération entre deux opérandes et l'affeéctation du résultat à l'opérande de gauche</p>
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Opérateur</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">+=</th>
+                                    <td>Addition puis affectation : <br>
+                                        $x += $y équivaut à $x = $x + $y <br>
+                                        $y peut etre une expression complexe dont la valeur est un nombre </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">-=</th>
+                                    <td>Sosustraction puis affectation : <br>
+                                        $x -= $y équivaut à $x = $x - $y <br>
+                                        $y peut etre une expression complexe dont la valeur est un nombre </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">*=</th>
+                                    <td>Multiplication puis affectation : <br>
+                                        $x *= $y équivaut à $x = $x * $y <br>
+                                        $y peut etre une expression complexe dont la valeur est un nombre </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">**=</th>
+                                    <td>Puissance puis affectation : <br>
+                                        $x**=2 équivaut à $x($x)² </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">/=</th>
+                                    <td>Division puis affectation : <br>
+                                        $x /= $y équivaut à $x = $x / $y <br>
+                                        $y peut etre une expression complexe dont la valeur est un nombre different de 0 </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">%=</th>
+                                    <td>Modulo puis affectation : <br>
+                                        $x %= $y équivaut à $x = $x % $y $y <br>
+                                        $y peut etre une expression complexe dont la valeur est un nombre. </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">.=</th>
+                                    <td>Concaténation puis affectation : <br>
+                                        $x .= $y équivaut à $x = $x .$y <br>
+                                        $y peut etre une expression complexe dont la valeur est un chaine de caractere </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- fin de la colonne -->
+                </div><!-- fin de la rangée (row) -->
+
+                <hr>
+                <div class="row">
+                    <div class="col-sm-12 px-4">
+                        <h2 class="text-center"><u>5- Les constantes</u></h2>
+                        <p>Vous serez parfois amené à utiliser de manière répétitive des informations devant rester constantes dans toutes les pages d'un même site. Il peut s'agir de texte ou de nombres qui reviennent souvent. Pour ne pas risquer l'écrasement accidentel de ces valeurs, qui pourrait se produire si elles étaient contenues dans des variables, vous avez tout intérêt à les enregistrer sous forme de constantes personnalisées.</p>
+                        <p>On peut définir ses constantes soi-même cf. ; Pour définir des constantes personnalisées, utilisez la fonction define(), dont la syntaxe est la suivante : <strong>boolean define(string nom_cte, divers valeur_cte, boolean casse)</strong> Voir la page <a href="../00_pages/03-page.php" target="_blank">suivante</a></p>
+                    </div>
+                    <!--fin de la  colonne  -->
+                </div>
 
 
             </main>
