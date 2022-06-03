@@ -224,10 +224,66 @@
                     <div class="col-sm-12 px-4">
                         <h2 class="text-center"><u>5- Les constantes</u></h2>
                         <p>Vous serez parfois amené à utiliser de manière répétitive des informations devant rester constantes dans toutes les pages d'un même site. Il peut s'agir de texte ou de nombres qui reviennent souvent. Pour ne pas risquer l'écrasement accidentel de ces valeurs, qui pourrait se produire si elles étaient contenues dans des variables, vous avez tout intérêt à les enregistrer sous forme de constantes personnalisées.</p>
-                        <p>On peut définir ses constantes soi-même cf. ; Pour définir des constantes personnalisées, utilisez la fonction define(), dont la syntaxe est la suivante : <strong>boolean define(string nom_cte, divers valeur_cte, boolean casse)</strong> Voir la page <a href="../00_pages/03-page.php" target="_blank">suivante</a></p>
+                        <p>On peut définir ses constantes soi-même cf. ; Pour définir des constantes personnalisées, utilisez la fonction define(), dont la syntaxe est la suivante : <strong>boolean define(string nom_cte, divers valeur_cte, boolean casse)</strong> Voir la page <a href="../00_pages/03-page.php" target="_blank"></a><u>suivante</u></p>
                     </div>
                     <!--fin de la  colonne  -->
-                </div>
+                    <div class="col-sm-12 col-md-6">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope ="col">Constantes</th>
+                                    <th scope ="col">Resultats</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">PHP_VERSION</th>
+                                    <td>Version de PHP installée sur le serveur: 
+                                        <?php
+                                            echo PHP_VERSION;
+                                        ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">PHP_OS</th>
+                                    <td>Nom du système d'exploitation du serveur: 
+                                        <?php
+                                            echo PHP_OS;
+                                        ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">DEFAULT_INCLUDE_PATH</th>
+                                    <td>Chemin d'accés aux fichiers par défaut: 
+                                        <?php
+                                            echo DEFAULT_INCLUDE_PATH;
+                                        ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">__FILE__</th>
+                                    <td>Nom du fichier en cours d'exécution: 
+                                        <?php
+                                            echo __FILE__;
+                                        ?>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">__LINE__</th>
+                                    <td>Nom du fichier en cours d'exécution: 
+                                        <?php
+                                            echo __LINE__;
+                                        ?>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                       </div><!-- fin de la colonne -->
+                     </div><!-- fin de la rangée (row) -->
+                     
+                     <hr>
+
+
 
 
             </main>
