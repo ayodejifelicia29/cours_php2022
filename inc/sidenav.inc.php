@@ -42,7 +42,7 @@
                     <a href="../04_GET-POST/method_get.php">Méthode GET</a>
                 </li>
                 <li>
-                    <a href="../04_GET-POST/method_post.php">Page 2</a>
+                    <a href="../04_GET-POST/method_post.php">Méthode POST</a>
                 </li>
             </ul>
         </li>
