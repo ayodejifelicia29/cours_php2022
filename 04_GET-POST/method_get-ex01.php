@@ -24,6 +24,7 @@
         <h1 class="display-3">Cours PHP7 - Premier exercice</h1>
         <p class="lead">Première page d'exercice pour le PHP</p>
     </div>
+    
 
     <!-- RANGÉE PRINCIPALE -->
     <div class="row">
@@ -90,7 +91,6 @@
             </ul>
         </div>
     </div>
-    di
 
     <!-- LE FOOTER EN REQUIRE -->
     <?php

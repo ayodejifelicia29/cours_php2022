@@ -1,6 +1,10 @@
-<?php require_once('../inc/functions.php') ?> 
+<?php
+require_once('../inc/functions.php')
+?>
+
 <!doctype html>
 <html lang="fr">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,59 +17,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
 
-    <title>Cours PHP7 -La méthode GET</title>
+    <title>Cours_PHP2022-la méthode GET-POST</title>
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body class="bg-dark">
     <!-- JUMBOTRON -->
-    <div class="jumbotron bg-dark text-white text-center">
-        <h1 class="display-3">Cours PHP7 - La méthode GET</h1>
-        <p class="lead">$_GET[] réprésente le sodnnées qui transitent par l'URL</p>
+    <div class="jumbotron  text-center">
+        <h1 class="display-3">Cours_PHP2022 - Méthode GET</h1>
+        <hr>
+        <p class="lead bg-light">$_GET [] représente les données qui transitent par l'URL.</p>
     </div>
-
-    <!-- RANGÉE PRINCIPALE -->
-    <div class="row">
-        <!-- LA NAVIGATION EN INCLUDE (penser à ajouter le JS qui va avec en fin de page) -->
+               
+    <!-- RANGEE PRINCIPALE -->
+    <div class="row bg-light">
+        <!-- La barre de navigation en include (penser à toujours ajouter le JS en fin de page)    --->
         <?php
-            require('../inc/sidenav.inc.php')
+        require('../inc/sidenav.inc.php');
         ?>
-
         <!-- ============================================================== -->
         <!-- Contenu principal -->
         <!-- ============================================================== -->
         <div class="col-sm-8">
+        <?php
+                    $x = "8";
+                    jevar_dump($x);
+                ?>
+                
             <main class="container-fluid">
+                <div class="row">
                
-                    </div><!-- fin de la colonne -->
-                </div><!-- fin de la rangée -->
-
-                <hr>
-                <br><br>
-
+                    
+                </div>
             </main>
-        </div> <!-- FIN DE LA PARTIE PRINCIPALE COL-8 -->
+        </div>
 
-        
-    </div>
-
-    <!-- LE FOOTER EN REQUIRE -->
-    <?php
-        require("../inc/footer.inc.php")
-    ?>
-
-    <!-- Optional JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
-
-    <!-- le js pour la navigation  -->
-    <script src="../inc/sidenav.js"></script>
-
-</body>
-</html>
-© 2022 GitHub, Inc.
-Terms
-Privacy
-Security
