@@ -90,6 +90,7 @@
             </ul>
         </div>
     </div>
+    di
 
     <!-- LE FOOTER EN REQUIRE -->
     <?php
