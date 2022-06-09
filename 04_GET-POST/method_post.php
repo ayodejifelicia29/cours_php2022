@@ -100,6 +100,7 @@
     
                             }
                         ?> 
+                        
                           </div><!-- fin col -->
 
                     </div><!-- fin de la rangée -->
