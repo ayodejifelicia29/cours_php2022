@@ -21,7 +21,7 @@
 <body class="bg-dark">
     <!-- JUMBOTRON -->
     <div class="jumbotron bg-dark text-white text-center">
-        <h1 class="display-3">Cours PHP_2022 - Premier exercice</h1>
+        <h1 class="display-3">Cours PHP7 - Premier exercice</h1>
         <p class="lead">Première page d'exercice pour le PHP</p>
     </div>
 
@@ -37,7 +37,13 @@
         <!-- ============================================================== -->
         <div class="col-sm-8">
             <main class="container-fluid">
-               
+                <!-- BOUTON DE LA NAV -->
+                <button type="button" id="sidebarCollapse" class="navbar-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
                 <div class="row">
                     <hr>
                     <h2 class="col-sm-12 text-center" id="definition">1 - Tableau créé par la variable $_GET[]</h2>
