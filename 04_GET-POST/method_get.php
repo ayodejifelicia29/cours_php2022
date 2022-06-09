@@ -35,22 +35,60 @@ require_once('../inc/functions.php')
     <div class="row bg-light">
         <!-- La barre de navigation en include (penser à toujours ajouter le JS en fin de page)    --->
         <?php
-        require('../inc/sidenav.inc.php');
+        require('../inc/sidenav.inc.php')
         ?>
         <!-- ============================================================== -->
         <!-- Contenu principal -->
         <!-- ============================================================== -->
         <div class="col-sm-8">
-        <?php
-                    $x = "8";
-                    jevar_dump($x);
-                ?>
-                
-            <main class="container-fluid">
+       <main class="container-fluid">
                 <div class="row">
-               
-                    
-                </div>
+                    <hr>
+                    <h2 class="col-sm-12 test-cent" id="definition"><u>1-Introduction</u></h2>
+                    <div class="col-sm-12 col-md-6">
+                    <p>Il s'agit d'une super globale et comme toutes les supers globales, c'est un tableau. 
+                        Superglobale signifie  que cette variable est disponible partout dans le script,
+                         y compris au sein des fonctions.   Les informations trnasitent dans l'url selon 
+                         la syntaxe suivante :
+                        <code>mapage.php?indice1=valeur1&indiceN=valeurN</code>.</p>
+                        <p>Quand on récupère les données, $_GET fabrique un tableau et se remplit selon le schéma suivant : <code>$_GET = array('indice1' => 'valeur1','indiceN' => 'valeurN');</code></p>
+                    </div><!-- fin de la colonne -->
+                    <div class="col-sm-12 col-md-6 test-center">
+                        <div class="row">
+                         <div class="col-sm-12 col-md-4">
+                                <a href="method_get-ex01.php?article=Jean&couleur=bleu&prix=55">
+                                <img src="../img/jean.jpg" alt="jeanbleu" class="img-fluid">Jean bleu</a>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <a href="method_get-ex01.php?article=Robe&couleur=rouge&prix=75">
+                                <img src="../img/robe.jpg" alt="roberouge" class="img-fluid">Robe rouge</a>
+                            </div>
+                            <div class="col-sm-12 col-md-4">
+                                <a href="method_get-ex01.php?article=Pull&couleur=blanc&prix=45">
+                                <img src="../img/pull.jpg" alt="pullblanc" class="img-fluid">Pull blanc</a>
+                            </div>
+                        </div>
+                    </div><!-- fin de colonne -->
+                 </div><!-- fin de la range(row) -->
+                 <hr>
+                 <br> <br>
             </main>
         </div>
+        </div>
+    <!-- FIN DU CONTENU PRINCIPAL -->
+    <!-- LE FOOTER EN REQUIRE -->
+    <?php
+    require("../inc/footer.inc.php")
+    ?>
 
+    <!-- Optional JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+    <!-- le js pour la navigation  -->
+    <script src="../inc/sidenav.js"></script>
+
+</body>
+
+</html>
