@@ -42,7 +42,7 @@ require_once('../inc/functions.php')
             <main class="container-fuild">
                 <div class="row">
                     <hr>
-                    <h2 class="col-sm-12 text-center" id="definition"><u>1 - Connexion à la BDD</u></h2>
+                    <h2 class="col-sm-12 text-center" id="definition">1 - Connexion à la BDD</h2>
                     <div class="col-sm-12">
                     <p><abbr title="PHP Data Object">PDO</abbr> est l'acronyme de PHP Data Object</p> 
                    
@@ -60,6 +60,8 @@ require_once('../inc/functions.php')
                        ?>
                     </div><!-- fin de col-sm-12 (first)  -->
                     <div class="col-sm-12">
+                        <hr>
+                        <br><br>
                     <h2 class="text-center"><span>2 -</span> Faire des requêtes avec <code>exec()</code></h2>
                     <p>La méthode exec() est utilisée pour faire des requêtes qui ne retournent pas de résultats : INSERT, UPDATE, DELETE</p>
                     <p>Valeurs de retour : <br>
@@ -78,11 +80,93 @@ require_once('../inc/functions.php')
                      .$pdoENT->lastInsertId(). ".</p>";
                      ?>
                     </div><!-- fin de la col -->
-                    <div class="col-sm-12">
+                   <div class="col-sm-12">
+                   <hr>
+                    <br><br>
                     <h2 class="text-center"><span>3 -</span> Faire des requêtes avec <code>query()</code></h2>
                     <p><code>query()</code> est utilisé pour faire des requêtes qui retournent un ou plusieurs résultats : SELECT mais aussi DELETE UPDATE et INSERT</p>
                         <p>En cas de succès : query() retourne un nouvel objet qui provient de la classe PDOstatement. <br> En cas d'échec : false</p>
-                    </div>
+                        <ul>
+                            <li>Pour information, on peut mettre dans les paramètres() de fetch ()</li>
+                            <li>PDO::FETCH_NUM : pour obtenir un tableau aux indices numériques</li>
+                            <li>PDO::FETCH_OBJ : pour obtenir un dernier objet</li>
+                            <li>Ou encore des () vides : pour obtenir un mélange de tableau associatif et numérique
+                            </li>
+                        </ul>
+                        <?php
+                        // 1-on demande des informationq à la BDD car il y a un ou plusieurs resultats avec query()
+                        $requete = $pdoENT->query( " SELECT  * FROM employes WHERE prenom = 'Emilie' " );
+                        // jevar_dump($requete);
+                        //2- dans cet objet $requete, nous ne voyons pas encore les données concernant Emilie pourtant elles s'y trouvent. Pour y accéder, nous devons utiliser une méthode de $requete qui s'appelle fetch()
+                        
+                        $ligne = $requete->fetch( PDO::FETCH_ASSOC );
+                        // 3- avec cette méthode fetch() on transforme l'objet $requete
+                        // 4- fetch(), avec le paramètre PDO::FETCH_ASSOC permet de transformer l'objet de la requête $requete en un array associatif appelé ici $ligne : on y trouve en indice le nom des champs de la requête SQL
+        
+                        // jevar_dump($ligne)
+
+                        echo "<ul><li>Id : " .$ligne['id_employes']. "<li>Prénom : " .$ligne['prenom']. "</li><li>Nom : " .$ligne['nom'].   "</li><li>Sexe : " .$ligne['sexe']. "</li><li>Service : " .$ligne['service']. "</li><li>Date d'entrée dans l'entreprise : " .$ligne['date_embauche']. "</li><li>Salaire : " .$ligne['salaire']. " €</li></ul>";
+                        
+                        // exo afficher le service de l'employé dont l'ID est 417 et son nom et son prénom
+                        $requete = $pdoENT->query("SELECT id_employes,service, prenom, nom FROM employes WHERE id_employes = '417' ");
+                        $ligne = $requete->fetch( PDO::FETCH_ASSOC );
+                        // jeprint_r($ligne);
+
+                        echo "<ul><li>ID:" .$ligne['id_employes']. "</li><li>Service:" .$ligne['service']. "</li><li>Prénom :" .$ligne['prenom']. "</li><li>Nom :" .$ligne['nom']. "</li>";
+                        
+                        jeprint_r($ligne);
+                     ?>
+                     </div><!-- fin de col -->
+                     <div class="col-sm-12">
+                        <hr>
+                        <br><br>
+                        <h2 class="text-center"><span>4 -</span> Faire des requêtes avec <code>query()</code>et afficher plusieur résultats</h2>
+                        <?php
+                         $requete = $pdoENT->query("SELECT * FROM employes ORDER BY prenom");
+                        //  jevar_dump($requete);
+                        // $ligne = $requete->fetchAll( PDO::FETCH_ASSOC );
+                        // jevar_dump($ligne);
+
+                        $nbr_employes = $requete->rowCount();//cette méthode rowCount() permet de compter le nombre d'enregistrements retournés par la requête
+                        // jevar_dump($nbr_employes);
+
+                        echo "<p>Il y a " .$nbr_employes. " employés dans la base.</p>";
+
+                          // comme nous avons plusieurs résultats dans $requete, nous devons faire une boucle pour les parcourir
+                            // fetch()va chercher la ligne suivante du jeu de résultat à chaque tour de boucle et le transforme en objet. La boucle while permet de faire avancer le curseur dans l'objet. Quand il arrive à la fin, fetch() retourne FALSE et la boucle s'arrête
+
+                            echo "<ul>";
+                            while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<li>".$ligne['prenom']. " -" .$ligne['nom']. " - " .$ligne['sexe']. " - " .$ligne['service']. " - " .$ligne['date_embauche']. " - " .$ligne['salaire']. " €</li>";
+                            }
+                            echo "</ul>";
+                                  // Exo afficher la liste des différents services dans une ul en mettant un service par li
+
+                                  $requete = $pdoENT->query("SELECT DISTINCT(service) FROM employes ORDER BY service");
+                                  $nbr_services = $requete->rowCount();
+
+                                  echo"<div class=\"bg-info rounded w-50 text-white mt-4 mx-auto\">";
+                                  echo "<p class=\"p-2 text-white\">Il y a " .$nbr_services. " services dans l'entreprise :</p>";
+                                  echo "</div>";
+
+                                  echo "<div class=\"border border-info rounded w-50 pt-3 mx-auto\">";
+                                  echo "<ul>";
+                                  while ($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+                                      echo "<li>".$ligne['service']. "</li>";
+                                  }
+                                  echo "</ul>";
+                                  echo "</div>";
+                                   // <!-- EXO 1/ dnas un h2, compter le nombre d'employés
+                            // 2/ puis afficher toutes les informations des employés dans un tableau HTML triés par ordre alphabétique de nom
+                            
+                             
+
+      
+
+                        ?>
+                        
+                       
+                     </div>
 
 
           </div><!-- fin de la rangée row -->
