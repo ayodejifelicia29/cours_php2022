@@ -25,7 +25,7 @@ require_once('../inc/functions.php')
 
 <body class="bg-dark">
     <!-- JUMBOTRON -->
-    <div class="jumbotron  text-center">
+    <div class="jumbotron bg-dark  text-center">
         <h1 class="display-3">Cours_PHP2022 - Méthode GET</h1>
         <hr>
         <p class="lead bg-light">$_GET [] représente les données qui transitent par l'URL.</p>
