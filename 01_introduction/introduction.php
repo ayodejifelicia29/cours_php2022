@@ -119,12 +119,14 @@
                     </div>
                 </div>
                 <!-- fin de la row(rangée) -->
+              
 
                 <br><br>
 
             </main>
         </div>
-        <!-- fin de la partie principale, col-8 -->
+        <!-- fin de la partie principale, col
+        -8 -->
        
     
 
