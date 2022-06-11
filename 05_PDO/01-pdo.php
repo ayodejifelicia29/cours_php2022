@@ -156,13 +156,61 @@ require_once('../inc/functions.php')
                                   }
                                   echo "</ul>";
                                   echo "</div>";
-                                   // <!-- EXO 1/ dnas un h2, compter le nombre d'employés
-                            // 2/ puis afficher toutes les informations des employés dans un tableau HTML triés par ordre alphabétique de nom
-                            
-                             
+                       // <!-- EXO 1/ dnas un h2, compter le nombre d'employés
+                      // 2/ puis afficher toutes les informations des employés dans un tableau HTML triés par ordre alphabétique de nom
+                      $requete = $pdoENT->query("SELECT * FROM employes ORDER BY id_employes");
+                      $nbr_employes = $requete->rowCount();
 
-      
+                      echo "<h2><span>Exo.</span> Il y a " .$nbr_employes. " employés dans la société.</h2>";
 
+                      echo "<table class=\"table table-dark table-striped\">";
+                      echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Prénom</th><th scope=\"col\">Nom</th><th scope=\"col\">Sexe</th><th scope=\"col\">Service</th><th scope=\"col\">Date d'embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
+                      while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
+
+                          echo "<tr>";
+                          echo "<td>#". $ligne['id_employes']. "</td>";   
+                          echo "<td>";
+                          if($ligne['sexe'] == 'f') {
+                              echo "Mme ";
+                          }else {
+                              echo "M. ";
+                          }
+                          echo $ligne['prenom']. "</td>";
+                          echo "<td>". $ligne['nom']. "</td>";
+                          echo "<td>". $ligne['sexe']. "</td>";
+                          echo "<td>". $ligne['service']. "</td>";
+                          echo "<td>". $ligne['date_embauche']. "</td>";
+                          echo "<td>". $ligne['salaire']. " €</td>";
+                          echo "</tr>";
+                      }
+
+                      echo "</table>";
+
+                      
+                      echo "<table class=\"table table-info table-striped\">";
+                      echo "<thead><tr><th scope=\"col\">Nom, prénom</th><th scope=\"col\">Service</th><th scope=\"col\">Date embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
+                      foreach ( $pdoENT->query( " SELECT * FROM employes ORDER BY sexe DESC, nom ASC " ) as $infos ) { //$employe étant un tableau on peut le parcourir avec une foreach. La variable $infos prend les valeurs successivement à chaque tour de boucle
+                      // jevar_dump($infos);
+                      echo "<tr>";
+                      echo "<td>";
+                      $fmt = new NumberFormatter( 'ru_RU', NumberFormatter::CURRENCY );
+                      if ( $infos['sexe'] == 'f') {
+                          echo "<span class=\"bagdge badge-secondary\">Mme </span>";
+                      } else {
+                          echo "<span class=\"bagdge badge-primary\">M. </span>";
+                      } echo $infos['nom']. " " .$infos['prenom']. "</td>";
+                      echo "<td>" .$infos['service']. " </td>";
+                      // ici on demande strftime('%d/%m/%Y', strtotime($infos['date_embauche']));
+                      setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR');
+                      echo "<td>" . strftime('%d %B %Y', strtotime($dateBDD)). " </td>";
+                      echo "<td>" .  $fmt->formatCurrency($infos['salaire'], "EUR")."</td>";
+                      // echo "<td>" . $nbr-format-fr = number_format($infos['salaire], 2, ',', ' ')."</td>";
+                      echo "</tr>";
+                      }
+                      echo "</table>";
+
+                  
+                        
                         ?>
                         
                        

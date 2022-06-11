@@ -15,8 +15,8 @@
         echo "<small class=\"bg-dark text-danger mx-auto mt-3 \">var_dump :<pre class=\"alert alert-info w-55 \">";
         var_dump($mavariable);
         echo "</pre>";
-    }
-    function jeprint_r($mavariable){
+        
+    }function jeprint_r($mavariable){
         echo "<small class=\"bg-primary text-white p-2\">print_r :</small><pre class=\"alert alert-primary w-50\">";
         print_r($mavariable);
         echo "</pre>";
