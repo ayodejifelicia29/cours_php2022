@@ -158,13 +158,15 @@ require_once('../inc/functions.php')
                                   echo "</div>";
                        // <!-- EXO 1/ dnas un h2, compter le nombre d'employés
                       // 2/ puis afficher toutes les informations des employés dans un tableau HTML triés par ordre alphabétique de nom
-                      $requete = $pdoENT->query("SELECT * FROM employes ORDER BY id_employes");
+                      $requete = $pdoENT->query("SELECT * FROM employes ORDER BY nom");
                       $nbr_employes = $requete->rowCount();
 
                       echo "<h2><span>Exo.</span> Il y a " .$nbr_employes. " employés dans la société.</h2>";
 
                       echo "<table class=\"table table-dark table-striped\">";
-                      echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Prénom</th><th scope=\"col\">Nom</th><th scope=\"col\">Sexe</th><th scope=\"col\">Service</th><th scope=\"col\">Date d'embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
+                      echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Prénom</th><th scope=
+                      \"col\">Nom</th><th scope=\"col\">Sexe</th><th scope=\"col\">Service</th><th scope=
+                      \"col\">Date d'embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
                       while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
 
                           echo "<tr>";
@@ -186,43 +188,72 @@ require_once('../inc/functions.php')
 
                       echo "</table>";
 
-                      
-                      echo "<table class=\"table table-info table-striped\">";
-                      echo "<thead><tr><th scope=\"col\">Nom, prénom</th><th scope=\"col\">Service</th><th scope=\"col\">Date embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
-                      foreach ( $pdoENT->query( " SELECT * FROM employes ORDER BY sexe DESC, nom ASC " ) as $infos ) { //$employe étant un tableau on peut le parcourir avec une foreach. La variable $infos prend les valeurs successivement à chaque tour de boucle
-                      // jevar_dump($infos);
-                      echo "<tr>";
-                      echo "<td>";
-                      $fmt = new NumberFormatter( 'ru_RU', NumberFormatter::CURRENCY );
-                      if ( $infos['sexe'] == 'f') {
-                          echo "<span class=\"bagdge badge-secondary\">Mme </span>";
-                      } else {
-                          echo "<span class=\"bagdge badge-primary\">M. </span>";
-                      } echo $infos['nom']. " " .$infos['prenom']. "</td>";
-                      echo "<td>" .$infos['service']. " </td>";
-                      // ici on demande strftime('%d/%m/%Y', strtotime($infos['date_embauche']));
-                      setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR');
-                      echo "<td>" . strftime('%d %B %Y', strtotime($dateBDD)). " </td>";
-                      echo "<td>" .  $fmt->formatCurrency($infos['salaire'], "EUR")."</td>";
-                      // echo "<td>" . $nbr-format-fr = number_format($infos['salaire], 2, ',', ' ')."</td>";
-                      echo "</tr>";
-                      }
-                      echo "</table>";
-
-                  
-                        
                         ?>
                         
-                       
-                     </div>
+                        </div><!-- fin de la row -->
 
 
           </div><!-- fin de la rangée row -->
 
           <hr>
           <br><br>
-         </main>
-        </div><!-- FIN DE LA CONTENU PRINCIPALE col-8  -->
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <h2><span>5 -</span> Requêtes préparées avec prepare()</h2>
+                        <p>Les requêtes préparées sont préconisées si vous exécutez plusieurs fois la mêm requête, ainsi vous éviterez au SGBD (système de gestion de base de données) de répéter toutes les phrases, analyses, exécution... On gagne en performance. </p>
+                        <p>Elles sont aussi utiles pour nettoyer les données et se prémunir des injections de type SQL (tentatives de piratage, cf. 09_securite). Permet de renforcer la sécurité. </p>
+                        <p>Une requête préparée se réalise en 3 requêtes : </p>
+                        <ul>
+                            <li>On prépare la requête sans l'exécuter grâce à <code>prepare()</code>.ICI :nom est un marqueur, une boîte vide et qui attend une valeur. $resultat est pour pour le moment un objet PDOstatement</li>
+                            <li>On lie le marqueur a une variable $nom grâce à <code>bindParam()</code></li>
+                            <li>on va ensuite exécuter la requête grâce à <code></code></li>
+                        </ul>
+                        <?php
+                          $nom = 'Gallet';//ici j'ai l'info que je cherche dans une variable je cherche un résultat ex. je cherche "Grand"
+                          // 1/ on prépare la requête
+                          $resultat = $pdoENT->prepare(" SELECT * FROM employes WHERE nom = :nom "); // a/ prepare permet de préparer la requête sans l'exécuter b/:nom est un marqueur qui est vide (comme une boîte vide) et qui attend une valeur c/ $resultat est pour le moment est pour le moment un objet PDOstatement
+                          // 2/ on lie le marqueur 
+                          $resultat->bindParam( ':nom', $nom );// bindParam permet de lier la marqueur à la variable :nom à une variable $nom on lie les paramètres
+                          // $resultat->bindValue( ':nom', 'titi' );// si on a besoin de lier le marqueur à une valeur fixe...
+                          // 3/ puis on exécute la requête
+                          $resultat->execute(); // permet d'exécuter toute la requête
+                          $employe = $resultat->fetch( PDO::FETCH_ASSOC );
+                        //    jevar_dump($employe);	
+                        echo "<p class=\"alert alert-primary\">" . $employe['prenom'] . ' ' . $employe['nom']. ' -  service : ' . $employe['service'] . '</p>';
+
+                        echo "<hr>"; 
+
+                        $sexe = 'f';
+                        $requete = $pdoENT->prepare(" SELECT * FROM employes WHERE sexe = :sexe "); 
+                        $requete->bindParam( ':sexe', $sexe );
+                        $requete->execute(); 
+                        $nombre_employes = $requete->rowCount();
+                        echo "<ul>";
+                        while ( $ligne = $requete->fetch( PDO::FETCH_ASSOC ) ) {
+                            echo "<li>Mme: " .$ligne['prenom']. " " .$ligne['nom'].", travaille au service : "  .$ligne['service']."</li>";
+                        }
+                        echo "</ul>";
+                            
+                        echo "<hr>";
+                    //sans bindParam 
+                        $resultat = $pdoENT->prepare( " SELECT * FROM employes WHERE prenom = :prenom AND nom = :nom " );// préparation de la requête
+                        $resultat->execute(array(// on fabrique un tableau
+                            ':nom' => 'Thoyer',
+                            ':prenom' => 'Amandine'// on peut se passer de bindParam
+                        ));
+                        //   jevar_dump($resultat);
+                         $employe = $resultat->fetch(PDO::FETCH_ASSOC);// on va chercher les infos
+                         // jevar_dump($employe);
+                         echo $employe['prenom']. " " .$employe['nom']. "  bosse pour le  service : " .$employe['service'];// on affiche les infos
+                     ?> 
+                        </div><!-- fin de la col -->
+
+                  </div><!-- fin de la rangée -->
+
+                    <hr>
+                    <br><br>
+           </main>
+           </div><!-- FIN DE LA CONTENU PRINCIPALE col-8  -->
         
 
 
