@@ -65,11 +65,28 @@ $expiration = time() + 365*24*60*60; // ex/ va nous donner la date actuelle expr
             <main class="container-fuild">
                 <div class="row">
                     <hr>
-                    <h2 class="col-sm-12 text-center" id="definition">>1 - Introduction</h2>
+                    <h2 class="col-sm-12 text-center" id="definition">1 - Introduction</h2>
                     <div class="col-sm-12">
-                    </div>
-                 </div>
-           
+                    <p>Les cookies sont autoomatiquement renvoyés au serveur web par le navigateur. Lorsque l'internaute navigue dans les pages concernées par le ou les cookies, PHP permet de récupérer très facilement les données contenues dans un cookie. Non seulement on peut le fabriquer mais on peut aussi le récupérer. Les informations sont stockées dans une superglobale : $_COOKIE. </p>
+                  <p class="alert alert-danger w-50 mx-auto">Un cookie étant sauvegardé sur le poste de l'internaute, il peut être modifié, détourné ou volé !!!! On n'y met donc AUCUNE information sensible, comme les références bancaires, le numéro de sécu, le mot de passe, ni même le contenu d'un panier d'achat. </p>
+                  <div class="w-75 text-center mx-auto">
+                      <!-- / ON envoie la langue choisie par l'URL : la valeur "fr" par exemple est récupérée dans la superglobale $_GET -->
+
+                        <a href="?langue=fr" class="btn btn-primary">Français</a>-
+                        <a href="?langue=es" class="btn btn-success">Espagnol</a>-
+                        <a href="?langue=it" class="btn btn-danger">Italien</a>-
+                        <a href="?langue=ru" class="btn btn-warning">Russe</a>
+
+                        <?php
+                          echo "<hr><br><h3>Langue du site :  $langue</h3>";
+                          echo time() . " : la date du jour exprimée en secondes depuis le 1er janvier 1970."
+                       
+                        ?>
+                      </div>
+                    </div><!-- fin de la col -->
+                 </div> <!-- fin de la rangée -->
+           <hr>
+           <br> <br>
            </main>
            </div><!-- FIN DE LA CONTENU PRINCIPALE col-8  -->
         
