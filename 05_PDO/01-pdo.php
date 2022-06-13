@@ -49,7 +49,7 @@ require_once('../inc/functions.php')
                    <?php
                         $pdoENT = new PDO('mysql:host=localhost;dbname=entreprise',// on a en premier lieu le driver mysql (IBM, ORACLE, ODBC ...), le nom du serveur, le nom de la BDD
                         'root',// l'utilisateur pour la BDD
-                        '',// si vous êtes sur MAC il y a un mdp = 'root'
+                        'root',// si vous êtes sur MAC il y a un mdp = 'root'
                         array(
                             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,// cette ligne sert à afficher les erreurs SQL dans le navigateur
                             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',// pour définir le charset des échanges avec la BDD
@@ -158,7 +158,7 @@ require_once('../inc/functions.php')
                                   echo "</div>";
                        // <!-- EXO 1/ dnas un h2, compter le nombre d'employés
                       // 2/ puis afficher toutes les informations des employés dans un tableau HTML triés par ordre alphabétique de nom
-                      $requete = $pdoENT->query("SELECT * FROM employes ORDER BY id_employes");
+                      $requete = $pdoENT->query("SELECT * FROM employes ORDER BY nom");
                       $nbr_employes = $requete->rowCount();
 
                       echo "<h2><span>Exo.</span> Il y a " .$nbr_employes. " employés dans la société.</h2>";
@@ -184,37 +184,10 @@ require_once('../inc/functions.php')
                           echo "</tr>";
                       }
 
-                      echo "</table>";
-
-                      
-                      echo "<table class=\"table table-info table-striped\">";
-                      echo "<thead><tr><th scope=\"col\">Nom, prénom</th><th scope=\"col\">Service</th><th scope=\"col\">Date embauche</th><th scope=\"col\">Salaire</th></tr></thead>";
-                      foreach ( $pdoENT->query( " SELECT * FROM employes ORDER BY sexe DESC, nom ASC " ) as $infos ) { //$employe étant un tableau on peut le parcourir avec une foreach. La variable $infos prend les valeurs successivement à chaque tour de boucle
-                      // jevar_dump($infos);
-                      echo "<tr>";
-                      echo "<td>";
-                      $fmt = new NumberFormatter( 'ru_RU', NumberFormatter::CURRENCY );
-                      if ( $infos['sexe'] == 'f') {
-                          echo "<span class=\"bagdge badge-secondary\">Mme </span>";
-                      } else {
-                          echo "<span class=\"bagdge badge-primary\">M. </span>";
-                      } echo $infos['nom']. " " .$infos['prenom']. "</td>";
-                      echo "<td>" .$infos['service']. " </td>";
-                      // ici on demande strftime('%d/%m/%Y', strtotime($infos['date_embauche']));
-                      setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR');
-                      echo "<td>" . strftime('%d %B %Y', strtotime($dateBDD)). " </td>";
-                      echo "<td>" .  $fmt->formatCurrency($infos['salaire'], "EUR")."</td>";
-                      // echo "<td>" . $nbr-format-fr = number_format($infos['salaire], 2, ',', ' ')."</td>";
-                      echo "</tr>";
-                      }
-                      echo "</table>";
-
-                  
+                      echo "</table>"
+                    ?>
                         
-                        ?>
-                        
-                       
-                     </div>
+                        </div><!-- fin de la col -->
 
 
           </div><!-- fin de la rangée row -->
