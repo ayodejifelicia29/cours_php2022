@@ -28,7 +28,10 @@ session_start(); // permet de créer un fichier de session avec son identifiant 
     <div class="jumbotron bg-dark text-white text-center">
         <h1 class="display-3">Cours_PHP2022 -la variable $_SESSION </h1>
         <hr>
-        <p class="lead ">La méthode POST réceptionne les données d'un formulaire, $_POST est une superglobale</p>
+        <p class="lead ">Une session est un systéme mis en oeuvre dans le code PHP permettant de conserver sur le serveur, dans un fichier temporair, des informations relatives à un internaute.
+       
+        L'avantage d'une session c'est que les données seront enregistrées dans un fichier sur le serveur disponible et consultable sur l'ensemble des pages durant toute la navigation de l'internaute.
+        </p>
     </div>
                
     <!-- RANGEE PRINCIPALE -->
@@ -58,7 +61,7 @@ session_start(); // permet de créer un fichier de session avec son identifiant 
                         <p>Le fichier de session peut contenir des informations sensibles !!!! IL n'est odnc pas accessible par l'internaute. </p>
                         <p>Il est possible de vider une partie de la session avec le code suivant <code>unset($_SESSION['mdp']);</code></p>
                         <?php
-                        unset($_SESSION['mdp']);
+                         unset($_SESSION['mdp']);
                          jeprint_r($_SESSION);
 
                          ?>
@@ -71,6 +74,19 @@ session_start(); // permet de créer un fichier de session avec son identifiant 
                          ?>
                             <p>Nous avons effectué un session_destroy() mais il n'est exécuté qu'à la fin de notre script. Nous voyons encore ici le contenu de la session mais le ficier temporaire dans le dossier Temp a bien été supprimé. Ce fichier contient les infos de sessionet elles sont accessibles à <code>session_start()</code>.</p>
                         <p>Si on a besoin des informations de cette page, le code <code>session_start()</code> devra être placé au début de la page. </p>
+
+                        <?php
+                        if(isset($_SESSION['pseudo'])){
+                            echo "Votre pseudo est : ".$_SESSION['pseudo']."<br>";
+                        }
+                        else{
+                            echo '<form methode="post" action="">
+                            <label for="pseudo">Pseudo</label><br>
+                            <input type="text" name="pseudo" value=""><br>
+                            <input type="submit" value="Envoyer"></form>';
+                        }
+                        
+                        ?>
 
                      </div>
                   </div>
