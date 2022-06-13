@@ -193,7 +193,7 @@ require_once('../inc/functions.php')
                         </div><!-- fin de la row -->
 
 
-          </div><!-- fin de la rangée row -->
+              </div><!-- fin de la rangée row -->
 
           <hr>
           <br><br>

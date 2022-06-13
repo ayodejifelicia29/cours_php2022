@@ -1,7 +1,29 @@
 <?php
-require_once('../inc/functions.php')
- // 2- si une langue est passée dans l'url (l'internaute a cliqué sur un lien), on enverra cette langue dans le cookie. 
-?>
+require_once('../inc/functions.php');
+
+ //  Si une langue est passée dans l'url (l'internaute a cliqué sur un lien), on enverra cette langue dans le cookie. 
+  
+ if(isset($_GET['langue'])){
+    $langue = ($_GET['langue']);
+    jeprint_r($langue);
+     jevar_dump($langue);
+}else if (isset($_COOKIE['langue'])) { // sinon si on a reçu un cookie appelé langue alors la valeur du site aura la valeur de la langue
+    $langue = $_COOKIE['langue'];
+    jeprint_r($langue);
+} else { //sinon par défaut
+    $langue = 'fr';
+    jeprint_r($langue);
+}
+// Envoie du cookie avec l'info sur la langue à l'intérieur
+
+$expiration = time() + 365*24*60*60; // ex/ va nous donner la date actuelle exprimée en secondes
+//time nous donne la date du jour depuis le début de UNIX (1970), date exprimée en secondes
+  jeprint_r($expiration);  // j'ajoute à la date du jour les données d'une année en secondes
+  setcookie('langue', $langue, $expiration, ); // fonction qui fabrique le cookie, ce cookie est appelé langue avec la valeur de $langue et la valeur de $expiration
+  
+    //Il n'existe pas de fonction prédéfinie quii permette de supprimer un cookie. Pour rendre un cookie invalide, on utilise setcookie() avec le nom concerné et en mettant une date d'expiration à 0 ou antérieure à la date actuelle
+?> 
+
 
 <!doctype html>
 <html lang="fr">
@@ -17,7 +39,7 @@ require_once('../inc/functions.php')
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bad+Script&display=swap" rel="stylesheet">
 
-    <title>Cours_PHP2022- PDO</title>
+    <title>Cours_PHP2022- Cookies</title>
 
     <!-- mes styles -->
     <link rel="stylesheet" href="../css/style.css">
@@ -26,9 +48,9 @@ require_once('../inc/functions.php')
 <body class="bg-light">
     <!-- JUMBOTRON -->
     <div class="jumbotron bg-dark text-white text-center">
-        <h1 class="display-3">Cours_PHP2022 - PDO </h1>
+        <h1 class="display-3">Cours_PHP2022 - Cookies </h1>
         <hr>
-        <p class="lead ">La variable "$pdo" est un objet qui représente la connexion à une BDD.</p>
+        <p class="lead ">>La super globale $_COOKIE : un cookie est un petit fichier de 4ko maxi déposé par le serveur web sur le poste de l'internaute et qui contient des informations.</p>
     </div>
                
     <!-- RANGEE PRINCIPALE -->
@@ -43,7 +65,7 @@ require_once('../inc/functions.php')
             <main class="container-fuild">
                 <div class="row">
                     <hr>
-                    <h2 class="col-sm-12 text-center" id="definition">1 - Connexion à la BDD</h2>
+                    <h2 class="col-sm-12 text-center" id="definition">>1 - Introduction</h2>
                     <div class="col-sm-12">
                     </div>
                  </div>
