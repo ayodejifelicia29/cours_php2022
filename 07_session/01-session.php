@@ -84,7 +84,7 @@ session_start(); // permet de créer un fichier de session avec son identifiant 
                             <label for="pseudo">Pseudo</label><br>
                             <input type="text" name="pseudo" value=""><br>
                             <input type="submit" value="Envoyer"></form>';
-                        }
+                        } 
                         
                         ?>
 
