@@ -104,7 +104,7 @@
                          
                              echo "<p>Il y a " .$nbr_commentaires. "  commentaires dans ma base de donnée.</p>";
                          
-                             echo "<table class=\"table table-striped\">";
+                             echo "<table class=\"table table-striped table-hover\">";
                              echo "<thead><tr><th scope=\"col\">ID</th><th scope=\"col\">Pseudo</th><th scope=\"col\">Message</th><th scope=\"col\">Date d'enregistrement</th></thead>";
                              while($ligne = $requete->fetch(PDO::FETCH_ASSOC)) {
                          
@@ -120,12 +120,7 @@
                              echo "</table>";
                          ?> 
 
-                           
-                          
-                           
-                            
-                            
-                        </div>
+                           </div>
                     </div><!-- fin de la colonne -->
 
                 </div><!-- fin de la rangée -->
