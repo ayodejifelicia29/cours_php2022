@@ -97,7 +97,7 @@ if ( !empty($_POST)) {
     <div class="col-sm-8 bg-white p-5">
         <div class="row jumbotron bg-light">
             <div class="col-sm-12">
-                <h1 class="text-center">Cours_PHP2022 Employé<?php if($fiche['sexe'] == 'f') {?> e<?php } echo " " .$fiche['prenom']. " " .$fiche['nom']; ?></h1>
+                <h1 class="text-center">Cours_PHP2022 Employé<?php if($fiche['sexe'] == 'f') {?>e<?php } echo " " .$fiche['prenom']. " " .$fiche['nom']; ?></h1>
                 <p class="lead text-center mt-4">Modification d'un employé</p>
             </div>
         </div><!-- fin row -->
