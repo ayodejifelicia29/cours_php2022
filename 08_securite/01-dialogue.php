@@ -96,7 +96,8 @@
                     <h2 class="col-sm-12 text-center" id="">2 - Exercice</h2>
                     <div class="col-sm-12">
                      <p>Compter les commentaires de la base de donnée "dialogue" et les afficher dans un tableau </p>
-                        <div class="alert alert-success">
+                        <div class="alert alert-success
+                        ">
                             <?php
                              $requete = $pdoDialogue->query("SELECT * FROM commentaire");
                              $nbr_commentaires = $requete->rowCount();
