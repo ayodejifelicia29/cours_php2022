@@ -3,7 +3,7 @@
     $host = 'localhost';
     $database='entreprise';
     $user='root';
-    $psw=''; /* (root sur mac) */
+    $psw='root'; /* (root sur mac) */
 
    $pdoENT =new PDO('mysql:host='.$host.';dbname='.$database,$user,$psw);
    $pdoENT->exec("SET NAMES UTF8");

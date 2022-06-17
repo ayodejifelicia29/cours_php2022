@@ -4,7 +4,7 @@ require_once '../inc/functions.php';
 $host = 'localhost';
 $database = 'entreprise';
 $user = 'root';
-$psw = '';
+$psw = 'root';
 
 $pdoENT = new PDO('mysql:host='.$host.';dbname='.$database,$user,$psw);
 $pdoENT->exec("SET NAMES utf8");
