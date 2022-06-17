@@ -49,7 +49,7 @@ require_once('../inc/functions.php')
                    <?php
                         $pdoENT = new PDO('mysql:host=localhost;dbname=entreprise',// on a en premier lieu le driver mysql (IBM, ORACLE, ODBC ...), le nom du serveur, le nom de la BDD
                         'root',// l'utilisateur pour la BDD
-                        '',// si vous êtes sur MAC il y a un mdp = 'root'
+                        'root',// si vous êtes sur MAC il y a un mdp = 'root'
                         array(
                             PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,// cette ligne sert à afficher les erreurs SQL dans le navigateur
                             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',// pour définir le charset des échanges avec la BDD
