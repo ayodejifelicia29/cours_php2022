@@ -395,4 +395,4 @@ $table_contacts = $pdo->query("SELECT * FROM contact");
 							echo '</tr>';
 						}
 						echo '</table>';
-					?>
+					?> 
