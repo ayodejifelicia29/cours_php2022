@@ -187,7 +187,7 @@ var_dump($value);
 $pdo = new PDO(
 	'mysql:host=localhost;dbname=contacts',// driver mysql (pourrait être oracle, IBM, ODBC...) + nom de la BDD
 	'root', // pseudo de la BDD
-	'', // mdp de la BDD
+	'root', // mdp de la BDD
     //'root', // mdp de la BDD ⚡️ pour Mac ⚡️
 	array(
 		PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, // pour afficher les messages d'erreur SQL
