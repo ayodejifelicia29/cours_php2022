@@ -1,4 +1,5 @@
 <?php
+<<<<<<< Updated upstream
 //1-fonction print-r
 function jeprint_r($mavariable){
     echo "<small class=\"bg-primary text-white p-2\">print_r :</small><pre class=\"alert alert-primary w-50\">";
@@ -21,5 +22,7 @@ function executeRequete($requete, $parametres = array()) {  // utile pour toutes
         }
 }//fermeture de la fonction executeRequete
  
+=======
+>>>>>>> Stashed changes
 
 ?>
