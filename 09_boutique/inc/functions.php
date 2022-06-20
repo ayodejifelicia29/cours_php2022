@@ -20,6 +20,5 @@ function executeRequete($requete, $parametres = array()) {  // utile pour toutes
         }//fin if else
         }
 }//fermeture de la fonction executeRequete
- 
 
 ?>
