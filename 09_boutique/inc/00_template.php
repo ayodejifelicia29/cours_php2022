@@ -3,7 +3,7 @@
     jeprint_r($_SESSION);
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="fr">
   <head>
     <title>La boutique - connexion</title>
     <!-- Required meta tags -->
