@@ -1,30 +1,31 @@
 <?php
+    
+// fichier indispensable au fonctionnement du site
 
-   //fichier indispensable au fonctionnement du site
-
-   /////////////////////////////////////////////CONNEXION A LA BDD//////////////
-
-   ///1-Connexion
-   $pdoSITE = new PDO('mysql:host=localhost;dbname=site',
-   'root',
-   'root',
-   array(
-     PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,// pour afficher les warnings SQL dans le navigateur
-     PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',// pour définir le charset des échanges avec la BDD
-   ));
-
-   //////2- Ouverture de session
-   session_start();
-
-   /////3-chemin du site avec une constante
+///////////////////////////////////////////////
+ ///////////// CONNEXION À LA BDD //////////////
+    ///////////////////////////////////////////////
 
 
+/////// 1- Connexion
 
-   //// 4-variable pour les contenus
-   $contenu ='';
+$pdoSITE = new PDO('mysql:host=localhost;dbname=site',
+'root',
+'root',
+array(
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING,
+    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',   
+));
 
-   ///5- inclusion des fonctions
+///// 2- Ouverture de session
+session_start();
 
-   require_once('functions.php');
+//// 3- chemin du site avec une constante
 
-?>
+//// 4 - variable pour les contenus
+$contenu = '';
+
+//// 5 - inclusion des fonctions
+require_once('functions.php');
+?>  
+
