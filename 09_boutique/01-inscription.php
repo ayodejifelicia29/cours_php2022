@@ -1,7 +1,7 @@
 <?php
-       require_once('./init.php');
-       jeprint_r($_SESSION);
-    if( !empty($_POST)){
+       require_once('./inc/init.php');
+     //  jeprint_r($_SESSION);
+       if( !empty($_POST)){
         $_POST['psuedo'] = htmlspecialchars($_POST['psuedo']);
         $_POST['mdp'] = htmlspecialchars($_POST['mdp']);
         $_POST['nom'] = htmlspecialchars($_POST['nom']);
@@ -25,7 +25,7 @@
             ':ville' => $_POST['ville'],
           ));
         } // fin du if !empty       
-?>
+ ?>
 <!doctype html>
 <html lang="fr">
   <head>

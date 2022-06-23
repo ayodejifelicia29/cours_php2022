@@ -2,7 +2,7 @@
     $host = 'localhost';
     $database = 'site';
     $user = 'root';
-    $psw = '';
+    $psw = 'root';
     
     $pdoSITE = new PDO('mysql:host='.$host.';dbname='.$database,$user,$psw);
     $pdoSITE->exec("SET NAMES utf8");
