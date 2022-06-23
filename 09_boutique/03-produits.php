@@ -23,7 +23,7 @@
                 $requete =$pdoSITE-> query("SELECT * FROM produit ORDER BY id_produit");
 
                 echo "<table class=\"table table-dark table-striped\">";
-                echo "<thead><tr><th scope=\"col\">ID_produit</th><th scope=\"col\">Visuel</th><th scope=\"col\">Référence</th><th scope=\"col\">Public</th><th scope=\"col\">Prix</th><th scope=\"col\">Fiche</th>/tr></thead>";
+                echo "<thead><tr><th scope=\"col\">ID_produit</th><th scope=\"col\">Visuel</th><th scope=\"col\">Référence</th><th scope=\"col\">Titre</th><th scope=\"col\">Public</th><th scope=\"col\">Prix</th><th scope=\"col\">Fiche</th>/tr></thead>";
                 while($ligne =$requete->fetch(PDO::FETCH_ASSOC)){
                     echo "<tr>";
                     echo "<td>#".$ligne['id_produit']."</td>";
@@ -40,7 +40,7 @@
                           }
                           $fmt = new NumberFormatter('ru_RU', NumberFormatter:: CURRENCY);
                           echo "<td>".$fmt->formatCurrency($ligne['prix'], "EUR")."</td>";
-                          echo "<td><a href=\"fiche-produit.php?id_produit=".$ligne['id_produit']."\"class=\"text-white\">Voir sa fiche<a/a></td>";
+                          echo "<td><a href=\"fiche-produit.php?id_produit=".$ligne['id_produit']."\"class=\"text-dark\">Voir sa fiche<a/a></td>";
                           echo "</tr>";
                          }
                          echo "</table>";
